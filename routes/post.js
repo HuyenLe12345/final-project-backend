@@ -1,0 +1,11 @@
+const express = require("express");
+const postController = require("../controllers/post");
+const { checkAuth } = require("../middleware/checkAuth");
+const router = express.Router();
+router.post("/:postId/update", checkAuth, postController.updatePost);
+router.delete("/:postId/delete", checkAuth, postController.deletePost);
+router.get("/:postId", postController.getPostDetail);
+router.post("/create-post", checkAuth, postController.createPost);
+router.post("/:postId/toggle-like", checkAuth, postController.toggleLike);
+router.get("/", postController.fetchPosts);
+module.exports = router;
