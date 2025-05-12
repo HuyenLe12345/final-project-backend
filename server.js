@@ -49,10 +49,11 @@ app.use("/admin", adminRouter);
 app.use("/projects", projectRouter);
 app.use("/projects", adminRouter);
 app.use("/posts", postRouter);
+const PORT = process.env.PORT || 8080;
 mongoose
   .connect(uri)
   .then((reuslt) => {
-    app.listen(8080);
+    app.listen(PORT);
   })
   .catch((err) => {
     console.log(err);
